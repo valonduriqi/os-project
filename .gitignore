@@ -1,0 +1,19 @@
+# OS generated files #
+.DS_Store
+Thumbs.db
+
+# Node.js generated files #
+node_modules/
+
+# Vite build output #
+/dist
+
+# Environment variables #
+.env.development
+.env.production
+.env
+
+# IDE/Editor specific files #
+.vscode/
+.idea/
+
