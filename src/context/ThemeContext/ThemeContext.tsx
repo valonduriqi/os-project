@@ -5,22 +5,16 @@ interface ThemeContextType {
   setIsDarkMode: (value: boolean) => void;
 }
 
-const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
-
-export const ThemeProvider = ({ children }: { children: ReactNode }) => {
-  const [isDarkMode, setIsDarkMode] = useState(false);
-
-  return (
-    <ThemeContext.Provider value={{ isDarkMode, setIsDarkMode }}>
-      {children}
-    </ThemeContext.Provider>
-  );
-};
+export const ThemeContext = createContext<ThemeContextType | undefined>({
+  isDarkMode: false,
+  setIsDarkMode: () => {},
+});
 
 export const useTheme = () => {
-  const context = useContext(ThemeContext);
-  if (!context) {
+  if (!ThemeContext) {
     throw new Error("useTheme must be used within ThemeProvider");
   }
-  return context;
+  return useContext(ThemeContext);
 };
+
+export const { Provider } = ThemeContext;
